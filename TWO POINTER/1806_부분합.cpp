@@ -1,33 +1,33 @@
-// N positive integers (10 ¡Â N < 100 000), 
+// N positive integers (10 Â¡Ã‚ N < 100 000), 
 // each of them less than or equal 10000
-// S ¡Â 100 000 000
+// S Â¡Ã‚ 100 000 000
 // goal : minimum length of subsequence, where sumbsum >= S
 
 
 //BigO O(N) 
 //data type: Integer (worst case: 10^4 * 10^5 = 10^9) 
 
-// N positive integers (10 ¡Â N < 100 000), 
+// N positive integers (10 Â¡Ã‚ N < 100 000), 
 // each of them less than or equal 10000
-// S ¡Â 100 000 000
+// S Â¡Ã‚ 100 000 000
 // goal : minimum length of subsequence, where sumbsum >= S
 
 
 //BigO O(N) 
 //data type: Integer (worst case: 10^4 * 10^5 = 10^9) 
 
-// N positive integers (10 ¡Â N < 100 000), 
+// N positive integers (10 Â¡Ã‚ N < 100 000), 
 // each of them less than or equal 10000
-// S ¡Â 100 000 000
+// S Â¡Ã‚ 100 000 000
 // goal : minimum length of subsequence, where sumbsum >= S
 
 
 //BigO O(N) 
 //data type: Integer (worst case: 10^4 * 10^5 = 10^9) 
 
-// N positive integers (10 ¡Â N < 100 000), 
+// N positive integers (10 Â¡Ã‚ N < 100 000), 
 // each of them less than or equal 10000
-// S ¡Â 100 000 000
+// S Â¡Ã‚ 100 000 000
 // goal : minimum length of subsequence, where sumbsum >= S
 
 
