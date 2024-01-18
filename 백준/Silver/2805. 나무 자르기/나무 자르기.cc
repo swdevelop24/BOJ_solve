@@ -7,8 +7,6 @@
 // =>  larger than 21e8 => long 
 
 #include<iostream>
-
-
 using namespace std;
 
 int n;
@@ -29,7 +27,7 @@ int isPossible(int tar) {
 }
 
 int bs(int s, int e) {
-	long long last = 0; 
+	int last = 0; 
 	while (s <= e) {
 		int mid = (s + e) / 2; 
 		if (isPossible(mid)) {
@@ -43,7 +41,6 @@ int bs(int s, int e) {
 }
 int main() {
 
-	//freopen_s(new FILE*, "b.txt", "r", stdin);
 	cin >> n >> m; 
 
 	for (int i = 0; i < n; i++) {
