@@ -1,55 +1,45 @@
-//constraints:
-//n = 1million (n: # of trees)
-//m = 2billion (required wood amount) 
-// tree hightest hight : 1 billion 
-//worst case(when saw height is 1billion)
-//  1million * 1billion = 10^6 * 10^9 = 10^15  
-// =>  larger than 21e8 => long 
-
 #include<iostream>
+typedef long long ll;
 using namespace std;
 
 int n;
-int m; 
-int arr[1000001]; 
+ll m;
 
-int isPossible(int tar) {
+int arr[1000001];
 
-	long long sum = 0; 
+int isPossible(int target) {
+
+	ll sum = 0;
 	for (int i = 0; i < n; i++) {
-		if (arr[i] > tar) {
-			sum += arr[i] - tar; 
+		if (arr[i] > target) {
+			sum += arr[i] - target;
 		}
 	}
 
-	return sum >= m;
-
-}
-
-int bs(int s, int e) {
-	int last = 0; 
-	while (s <= e) {
-		int mid = (s + e) / 2; 
-		if (isPossible(mid)) {
-			last = mid;
-			s = mid + 1;
-		}
-		else
-			e = mid - 1; 
-	}
-	return last;
+	return (sum >= m);
+	
 }
 int main() {
 
-	cin >> n >> m; 
-
+	//freopen_s(new FILE*, "a.txt", "r", stdin);
+	cin >> n >> m;
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i]; 
+		cin >> arr[i];
 	}
 
-	int ret = bs(0, 2000000000); 
-	cout << ret; 
-
-
-	return 0; 
+	ll start = 0;
+	ll end = 2e9;
+	ll ret = 0;
+	while (start <= end) {
+		ll mid = (start + end) / 2;
+		if (isPossible(mid)) {
+			ret = mid;
+			start = mid + 1;
+		}
+		else {
+			end = mid - 1;
+		}
+	}
+	cout << ret;
+	return 0;
 }
