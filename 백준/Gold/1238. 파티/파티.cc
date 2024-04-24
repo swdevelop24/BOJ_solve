@@ -22,6 +22,24 @@ int operator<(Node v, Node t) {
 
 priority_queue<Node> pq; 
 
+void dijkstra(vector<vector<Node>> &alist, int r) {
+
+	while (!pq.empty()) {
+		Node now = pq.top();
+		pq.pop();
+
+		if (ret[r][now.n] > now.time) continue;
+
+		for (Node next : alist[now.n]) {
+			int total = next.time + now.time;
+			if (ret[r][next.n] > total) {
+				ret[r][next.n] = total;
+				pq.push({ next.n, total });
+			}
+		}
+	}
+}
+
 int main() {
 	
 	//freopen_s(new FILE*, "a.txt", "r", stdin);
@@ -45,38 +63,12 @@ int main() {
 
 	pq.push({ x,0 });
 
-	while (!pq.empty()) {
-		Node now = pq.top();
-		pq.pop();
-
-		if (ret[0][now.n] > now.time) continue; 
-
-		for (Node next : alist[now.n]) {
-			int total = next.time + now.time; 
-			if (ret[0][next.n] > total) {
-				ret[0][next.n] = total; 
-				pq.push({ next.n, total }); 
-			}
-		}
-	}
-
+	dijkstra(alist, 0);
 
 	pq.push({ x,0 });
+	
+	dijkstra(backalist, 1);
 
-	while (!pq.empty()) {
-		Node now = pq.top();
-		pq.pop();
-
-		if (ret[1][now.n] > now.time) continue;
-
-		for (Node next : backalist[now.n]) {
-			int total = next.time + now.time;
-			if (ret[1][next.n] > total) {
-				ret[1][next.n] = total;
-				pq.push({ next.n, total });
-			}
-		}
-	}
 
 	int ans = 0; 
 
@@ -87,8 +79,6 @@ int main() {
 
 
 	cout << ans; 
-
-
 
 	return 0; 
 }
