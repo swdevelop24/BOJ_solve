@@ -28,7 +28,7 @@ void dijkstra(vector<vector<Node>> &alist, int r) {
 		Node now = pq.top();
 		pq.pop();
 
-		if (ret[r][now.n] > now.time) continue;
+		if (ret[r][now.n] < now.time) continue;
 
 		for (Node next : alist[now.n]) {
 			int total = next.time + now.time;
