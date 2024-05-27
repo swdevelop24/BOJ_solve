@@ -2,36 +2,42 @@
 #include<algorithm>
 using namespace std;
 
-int n, s, ans;
-int arr[100000];
-int mini = 21e8;
+int n; 
+int s; 
+int minlen; 
+int arr[100001]; 
+
 int main() {
 
-	cin >> n >> s;
-	ans = n + 1;
+	//freopen_s(new FILE*, "a.txt", "r", stdin);
+	cin >> n >> s; 
+
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
+		cin >> arr[i]; 
 	}
-
-	int left = 0;
-	int right = 0;
-	int subsum = 0;
-	int flag = 0;
-
-	for (int t = left; t < n; t++) {
-		while (subsum < s && right < n) {
-			subsum += arr[right];
-			right++;
+	int a = 0; 
+	int b = 0;
+	int sum = arr[0];
+	int minlen = 21e7; 
+	int len = 0; 
+	for (int a = 0; a < n; a++) {
+		while (sum < s && b < n) {
+			b++;
+			sum += arr[b];
 		}
-		if (subsum >= s)
-			ans = min(ans, right - left);
-		subsum -= arr[left];
-		left++;
+		if (sum >= s) {
+			minlen = min(b-a+1, minlen);
+		}
+	
+		sum -= arr[a];
+			
 	}
 
-	if (ans == n + 1) ans = 0;
-	cout << ans;
+	if (minlen == 21e7) {
+		cout << 0;
+	}
+	else
+		cout << minlen; 
 
-
-	return 0;
+	return 0; 
 }
