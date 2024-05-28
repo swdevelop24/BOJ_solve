@@ -2,40 +2,36 @@
 #include<cmath>
 using namespace std;
 
-int n;
-int S;
-int ret; 
+int n, s; 
 int arr[100001]; 
 
-
 int main() {
-	
-	cin >> n;
-	cin >> S; 
-	for (int i = 1; i <= n; i++) {
+	//freopen_s(new FILE*, "a.txt", "r", stdin);
+	cin >> n >> s; 
+	for (int i = 0; i < n; i++) {
 		cin >> arr[i]; 
 	}
-
-	int right = 0;
-	int sum = 0; 
-	ret = n + 1; 
-	for (int left = 1; left <= n; left++) {
-		sum -= arr[left - 1]; 
-		while (sum < S &&  right+1<=n) {
-			right++;
-			sum += arr[right]; 
+	int b = -1; 
+	int sum = 0;
+	int ret = n + 1; 
+	for (int a = 0; a < n; a++) {
+		while (b + 1 < n && sum < s) {
+			b++;
+			sum += arr[b]; 
 		}
-		if (sum >= S) {
-			ret = min(ret, right-left+ 1); 
+		if (sum >= s) {
+			ret = min(ret, b - a + 1); 
 		}
+		sum -= arr[a]; 
 	}
 
-	if (ret == n + 1) {
-		cout << 0;
-	}
-	else
-		cout << ret;
-	
+	if (ret == n + 1) cout << 0;
+	else cout << ret;
 
-	return 0; 
+
+	return 0;
 }
+
+
+
+
