@@ -2,47 +2,48 @@
 #include<algorithm>
 using namespace std;
 
-int n;
-long long arr[2001];
-
+int n; 
+int arr[2001]; 
 int ans;
-int ret;
-int isvalid(int idx) {
-	int right = n-1;
+int good; 
+
+int isValid(int idx) {
 	int left = 0;
+	int right = n - 1; 
 	int tar = arr[idx]; 
 	while (left < right) {
 		if (left == idx) left++;
-		else if (right == idx) right--;
+		else if (right == idx) right--; 
 		else {
-			if (arr[left] + arr[right] == tar) {
-				return 1;
-			}
+			if (arr[left] + arr[right] == tar) return 1;
 			else if (arr[left] + arr[right] > tar) right--;
-			else left++;
+			else left++; 
 		}
 	}
 
-	return 0;
+	return 0; 
 }
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
+
 	//freopen_s(new FILE*, "a.txt", "r", stdin);
 
-	cin >> n;
-
+	cin >> n; 
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
+		cin >> arr[i]; 
 	}
 
 	sort(arr, arr + n);
 	for (int i = 0; i < n; i++) {
-		ans = isvalid(i);
-		if (ans) ret++;
+		ans = isValid(i); 
+		if (ans) good++; 
 	}
 
-	cout << ret;
+	cout << good; 
+
 	return 0;
 }
+
