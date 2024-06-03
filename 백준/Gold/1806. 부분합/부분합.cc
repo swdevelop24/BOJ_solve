@@ -1,38 +1,42 @@
 #include<iostream>
+#define ll long long 
 using namespace std;
 
+int n; 
+int s; 
+int minlen = 21e8;
+int arr[100001]; 
+ll subsum; 
+
+
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	//freopen_s(new FILE*, "a.txt", "r", stdin);
 
-	int n, s; 
-	cin >> n >> s;
-
-	int arr[100001] = { 0 }; 
-
+	cin >> n; 
+	cin >> s; 
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i]; 
 	}
 
-	int sum = arr[0];
-	int cnt = 0; 
-	int mincnt = n + 1; 
 
-	int left = 0;
-	int right = 0; 
+	int right = -1; 
+	for (int left = 0; left < n; left++) {
+		while (subsum < s && right < n) {
+			right++; 
+			subsum += arr[right]; 
+		}
+		if (subsum >= s) {
+			minlen = min(minlen, right - left + 1);
+		}
+		subsum -= arr[left];
 
-	for (left = 0; left < n; left++) {
-		while (right < n && sum < s) {
-			right++;
-			sum += arr[right]; 
-		}
-		if (sum >= s) {
-			mincnt = min(mincnt, right - left +1); 
-		}
-		sum -= arr[left]; 
 	}
 
-	if (mincnt == n + 1) cout << 0;
-	else cout << mincnt;
-
+	if (minlen == 21e8) cout << 0;
+	else cout << minlen; 
 	return 0;
 }
