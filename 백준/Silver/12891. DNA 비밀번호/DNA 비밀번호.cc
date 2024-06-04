@@ -42,7 +42,7 @@ int main() {
 	for (int i = 0; i < p; i++) {
 		cnt[convert_to_int(str[i])]++; 
 	}
-	int ans = isvalid(cnt, mincnt) ? 1 : 0; 
+	int ans = isvalid(cnt, mincnt); 
 
 
 	for (int i = 1; i < s - p + 1; i++) {
