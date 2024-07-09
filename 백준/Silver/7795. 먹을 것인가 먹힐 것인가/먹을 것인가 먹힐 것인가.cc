@@ -2,61 +2,52 @@
 #include<algorithm>
 using namespace std;
 
-int t, n, m;
-int arr[20000];
-int brr[20000];
-int ret;
+int t;
+int n, m;
+int arr[42000];
+int brr[42000];
 
-//arr에 있는 target 보다 작은 brr값이 몇개 있는지 찾아야함. 
-int bs(int blen, int tar) {
-	int cnt = 0;
-	int maxi = 0;
-	int mid = 0;
-	int s = 0;
-	int e = blen-1;
-	while (s <= e) {
-		mid = (s + e) / 2;
+int bs(int left, int right, int tar) {
+	int ret = -1;
+	while (left <= right) {
+		int mid = (left + right) / 2;
 		if (brr[mid] < tar) {
-			cnt = mid +1;
-			s = mid + 1;
+			ret = mid;
+			left = mid + 1;
 		}
-		else {
-			e = mid - 1;
-
-		}
+		else
+			right = mid - 1;
 	}
-	return cnt;
+	return ret+1;
 }
 
 int main() {
 
-	//freopen_s(new FILE*, "b.txt", "r", stdin);
+	ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+	//freopen_s(new FILE*, "a.txt", "r", stdin); 
 	cin >> t;
 
 	for (int i = 0; i < t; i++) {
-
-		int alen, blen;
-		cin >> alen >> blen;
-		ret = 0;
-
-		for (int x = 0; x < alen; x++) {
+		cin >> n >> m;
+		for (int x = 0; x < n; x++) {
 			cin >> arr[x];
 		}
 
-		for (int x = 0; x < blen; x++) {
-			cin >> brr[x];
+		for (int y = 0; y < m; y++) {
+			cin >> brr[y];
 		}
 
-		sort(arr, arr + alen);
-		sort(brr, brr + blen);
+	    sort(arr, arr + n);
+		sort(brr, brr + m);
 
-		int cnt = 0;
-		for (int i = 0; i < alen; i++) {
-			cnt += bs(blen, arr[i]);
+		int ans = 0;
+		for (int s = 0; s < n; s++) {
+	
+			ans += bs(0, m-1, arr[s]);
 		}
 
-		cout << cnt << endl;
-
+		cout << ans  << " ";
 	}
+
 	return 0;
 }
