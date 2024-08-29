@@ -13,15 +13,15 @@ void run(int lev, int start){
         return; 
     }
     
-    for(int i=start; i<=n;i++){
+    for(int i=start+1; i<=n;i++){
         path[lev]=i; 
-        run(lev+1, i+1);
+        run(lev+1, i);
     }
 }
 
 int main(){
     cin>>n>>m; 
     
-    run(0,1); 
+    run(0,0); 
     return 0; 
 }
